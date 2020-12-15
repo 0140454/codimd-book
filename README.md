@@ -13,28 +13,29 @@
 
 ## Notice
 
-After markdown is parsed by MarkdownIt, tags in the following will be reserved and others will be removed.
-
-```
-h1
-h2
-h3
-h4
-h5
-h6
-ul
-ol
-li
-a
-b
-strong
-i
-em
-s
-sub
-sup
-mark
-```
+* Hostname **must** contains `hackmd` or `codimd`; otherwise, this extension will not enable book mode.
+  In the other words, if you host CodiMD without domain name, this extension is not for you.
+* After markdown is parsed by MarkdownIt, tags in the following will be reserved and others will be removed.
+  ```
+  h1
+  h2
+  h3
+  h4
+  h5
+  h6
+  ul
+  ol
+  li
+  a
+  b
+  strong
+  i
+  em
+  s
+  sub
+  sup
+  mark
+  ```
 
 ## Get Started
 
