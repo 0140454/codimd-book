@@ -274,7 +274,12 @@ function gotoNote(title, url) {
 
     container.append(iframe)
     iframe.contentWindow.addEventListener('hashchange', event => {
-      window.history.replaceState(null, document.title, event.target.location.hash)
+      if (event.target.location.hash) {
+        event.target.document.querySelector(decodeURIComponent(event.target.location.hash)).scrollIntoView()
+        window.history.replaceState(null, document.title, event.target.location.hash)
+      } else {
+        window.history.replaceState(null, document.title, window.location.href.split('#', 2)[0])
+      }
     })
   }
   // Show iframe
