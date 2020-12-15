@@ -1,5 +1,9 @@
 # CodiMD Book mode
 
+Display a sidebar like HackMD book mode
+
+Available on [Chrome Web Store](https://chrome.google.com/webstore/detail/codimd-book-mode/apahkbcjkfpaknjebpaoaehpjiedeapa).
+
 ## Disclaimer
 
 * **This extension is NOT developed by HackMD team.**
