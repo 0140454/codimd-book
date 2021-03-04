@@ -68,5 +68,6 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
   ]
 }, [
   'blocking',
-  'responseHeaders'
+  'responseHeaders',
+  'extraHeaders'
 ])
