@@ -1,6 +1,6 @@
 {
   "name": "CodiMD Book mode",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Display a sidebar like HackMD book mode",
   "icons": {
     "128": "icon.png"
