@@ -73,4 +73,4 @@ Available on [Chrome Web Store](https://chrome.google.com/webstore/detail/codimd
     * Starts with http (non-SSL)
   * This extension
     * `[target=_blank]` is added explicitly
-    * Not same-origin
+    * Cross-origin
