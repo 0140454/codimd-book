@@ -285,7 +285,7 @@ function gotoNote(title, url) {
   // Show iframe
   iframe.style = ''
   // Manipulate history
-  if (title !== null) {
+  if (title !== null && window.location.href !== url) {
     window.history.pushState(null, document.title, window.location.href)
     document.title = `${title} - ${document.title.split(' - ').reverse()[0]}`
     window.history.replaceState(null, document.title, url)
