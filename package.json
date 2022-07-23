@@ -4,7 +4,7 @@
     "build": "rm -rf ./dist && ./node_modules/.bin/webpack --config ./webpack.config.js",
     "pack": "rm -f $npm_package_name.zip && (cd dist ; zip -r ../$npm_package_name.zip *)",
     "watch": "rm -rf ./dist && ./node_modules/.bin/webpack --watch --config webpack.config.js",
-    "lint": "prettier --write .",
+    "lint": "prettier --check .",
     "lint:fix": "prettier --write ."
   },
   "devDependencies": {
