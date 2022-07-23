@@ -10,6 +10,15 @@ jobs:
     name: Publish Release
     runs-on: ubuntu-latest
     steps:
+      - name: Prepare environment variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const ref = '${{ github.ref }}'
+
+            const isPrerelease = /beta/.test(ref)
+
+            core.exportVariable('IS_PRERELEASE', isPrerelease)
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup node
@@ -23,22 +32,7 @@ jobs:
       - name: Pack extension
         run: npm run pack
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./codimd-book.zip
-          asset_name: codimd-book.zip
-          asset_content_type: application/zip
+          prerelease: ${{ env.IS_PRERELEASE }}
+          files: codimd-book.zip
