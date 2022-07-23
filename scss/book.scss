@@ -47,7 +47,6 @@
     &:hover {
       opacity: 1;
     }
-  
   }
 
   > .form-group {
@@ -67,7 +66,12 @@
   height: 100%;
   overflow: auto;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -103,7 +107,8 @@
     font-size: 16px;
   }
 
-  ul, ol {
+  ul,
+  ol {
     list-style-type: none;
     margin: 0;
     padding-left: 10px;
@@ -113,7 +118,7 @@
     &:last-child {
       margin-bottom: 10px;
     }
-  
+
     > a {
       color: #555;
       display: block;
@@ -137,7 +142,12 @@
 }
 
 #book-sidebar > #book-summary.filtered {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     display: none;
   }
 
@@ -170,7 +180,8 @@
     transform: rotate(-180deg);
   }
 
-  + ul, + ol {
+  + ul,
+  + ol {
     max-height: 0;
     overflow: hidden;
   }

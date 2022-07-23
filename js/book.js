@@ -2,14 +2,11 @@ const { isCodiMD } = require('./utils')
 const MarkdownIt = require('markdown-it')({
   html: true,
   linkify: true,
-  typographer: true
-}).use(
-  require('markdown-it-sub')
-).use(
-  require('markdown-it-sup')
-).use(
-  require('markdown-it-mark')
-)
+  typographer: true,
+})
+  .use(require('markdown-it-sub'))
+  .use(require('markdown-it-sup'))
+  .use(require('markdown-it-mark'))
 
 const KEY_BOOK = 'book'
 const ID_CONTAINER = 'book-container'
@@ -71,7 +68,8 @@ function createComponents() {
 function renderToolbar() {
   searchBox = document.createElement('div')
   searchBox.className = 'form-group input-group-sm'
-  searchBox.innerHTML = '<input class="form-control" placeholder="Search title ...">'
+  searchBox.innerHTML =
+    '<input class="form-control" placeholder="Search title ...">'
   searchBox.addEventListener('input', () => {
     doSearch()
   })
@@ -119,11 +117,28 @@ async function renderSidebar() {
   rendered.innerHTML = MarkdownIt.render(markdown)
   // Remove dummy elements
   const acceptedTags = [
-    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-    'ul', 'ol', 'li', 'a',
-    'b', 'strong', 'i', 'em', 's', 'sub', 'sup', 'mark'
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'ul',
+    'ol',
+    'li',
+    'a',
+    'b',
+    'strong',
+    'i',
+    'em',
+    's',
+    'sub',
+    'sup',
+    'mark',
   ]
-  rendered.querySelectorAll(acceptedTags.map(val => `:not(${val})`).join('')).forEach(elem => elem.remove())
+  rendered
+    .querySelectorAll(acceptedTags.map(val => `:not(${val})`).join(''))
+    .forEach(elem => elem.remove())
   // Preprocess links
   rendered.querySelectorAll('li').forEach(elem => {
     const anchor = elem.querySelector('a')
@@ -135,8 +150,12 @@ async function renderSidebar() {
     const anchorURL = new URL(anchor.href)
     const regex = /\s*\[target=_blank\]/g
 
-    const hasAttrInPrefix = anchor.previousSibling instanceof Text && regex.test(anchor.previousSibling.wholeText)
-    const hasAttrInSuffix = anchor.nextSibling instanceof Text && regex.test(anchor.nextSibling.wholeText)
+    const hasAttrInPrefix =
+      anchor.previousSibling instanceof Text &&
+      regex.test(anchor.previousSibling.wholeText)
+    const hasAttrInSuffix =
+      anchor.nextSibling instanceof Text &&
+      regex.test(anchor.nextSibling.wholeText)
     const isSameOrigin = window.location.origin === anchorURL.origin
     if (!hasAttrInPrefix && !hasAttrInSuffix && isSameOrigin) {
       return
@@ -144,7 +163,10 @@ async function renderSidebar() {
 
     anchor.setAttribute('target', '_blank')
     if (hasAttrInPrefix) {
-      anchor.previousSibling.data = anchor.previousSibling.data.replace(regex, '')
+      anchor.previousSibling.data = anchor.previousSibling.data.replace(
+        regex,
+        '',
+      )
     }
     if (hasAttrInSuffix) {
       anchor.nextSibling.data = anchor.nextSibling.data.replace(regex, '')
@@ -161,7 +183,10 @@ async function renderSidebar() {
   })
   // Preprocess headings
   rendered.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(elem => {
-    if (!elem.nextElementSibling || ['UL', 'OL'].indexOf(elem.nextElementSibling.tagName) === -1) {
+    if (
+      !elem.nextElementSibling ||
+      ['UL', 'OL'].indexOf(elem.nextElementSibling.tagName) === -1
+    ) {
       return
     }
 
@@ -275,10 +300,20 @@ function gotoNote(title, url) {
     container.append(iframe)
     iframe.contentWindow.addEventListener('hashchange', event => {
       if (event.target.location.hash) {
-        event.target.document.querySelector(decodeURIComponent(event.target.location.hash)).scrollIntoView()
-        window.history.replaceState(null, document.title, event.target.location.hash)
+        event.target.document
+          .querySelector(decodeURIComponent(event.target.location.hash))
+          .scrollIntoView()
+        window.history.replaceState(
+          null,
+          document.title,
+          event.target.location.hash,
+        )
       } else {
-        window.history.replaceState(null, document.title, window.location.href.split('#', 2)[0])
+        window.history.replaceState(
+          null,
+          document.title,
+          window.location.href.split('#', 2)[0],
+        )
       }
     })
   }
