@@ -71,12 +71,11 @@ chrome.webRequest.onHeadersReceived.addListener(
       }
     }
 
-    const dnrRules = Object.entries(modifiedHeaders)
-      .map(([name, value]) => ({
-        header: name,
-        operation: 'set',
-        value,
-      }))
+    const dnrRules = Object.entries(modifiedHeaders).map(([name, value]) => ({
+      header: name,
+      operation: 'set',
+      value,
+    }))
 
     chrome.declarativeNetRequest.updateSessionRules({
       removeRuleIds: [details.tabId],
