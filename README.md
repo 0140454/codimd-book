@@ -8,12 +8,14 @@ Available on [Chrome Web Store](https://chrome.google.com/webstore/detail/codimd
 
 - **This extension is NOT developed by HackMD team.**
 - I develop this extension for personal use.<br/>
-  There may be defects I haven't noticed. Please think twice before use.
+  There may be undiscovered defects. Please think twice before use.
 
 ## Requested Permissions
 
 - webRequest
-- webRequestBlocking
+  - Read security headers related to iframe
+- declarativeNetRequest
+  - Modify found security headers to make functionality working
 
 ## Notice
 
@@ -65,7 +67,7 @@ Available on [Chrome Web Store](https://chrome.google.com/webstore/detail/codimd
    ```
 4. Enjoy it
 
-## Difference between book mode in HackMD
+## Difference between this extension and HackMD
 
 - Links will be opened in new tab
   - HackMD ([Reference](https://hackmd.io/book-example#External-Link))
