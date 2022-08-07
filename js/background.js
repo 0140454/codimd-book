@@ -48,26 +48,15 @@ chrome.webRequest.onHeadersReceived.addListener(
          */
         modifiedHeaders[header.name.toLowerCase()] = 'SAMEORIGIN'
       } else if (header.name.toLowerCase() === 'content-security-policy') {
-        const cspStructure = parseCSP(header.value)
+        const rules = parseCSP(header.value)
 
-        if ('frame-ancestors' in cspStructure) {
-          const values = cspStructure['frame-ancestors']
-          const noneIndex = values.findIndex(
-            value => value.toLowerCase() === 'none',
-          )
-          const selfIndex = values.findIndex(
-            value => value.toLowerCase() === 'self',
-          )
+        rules['frame-ancestors'] = rules['frame-ancestors'] || []
+        rules['frame-ancestors'] = rules['frame-ancestors'].filter(
+          value => !["'none'", "'self'"].includes(value.toLowerCase()),
+        )
+        rules['frame-ancestors'].push("'self'")
 
-          if (noneIndex !== -1) {
-            values.splice(noneIndex, 1)
-          }
-          if (selfIndex === -1) {
-            values.push('self')
-          }
-        }
-
-        modifiedHeaders[header.name.toLowerCase()] = generateCSP(cspStructure)
+        modifiedHeaders[header.name.toLowerCase()] = generateCSP(rules)
       }
     }
 
