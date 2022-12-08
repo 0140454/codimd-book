@@ -6,20 +6,22 @@ Available on [Chrome Web Store](https://chrome.google.com/webstore/detail/codimd
 
 ## Disclaimer
 
-* **This extension is NOT developed by HackMD team.**
-* I develop this extension for personal use.<br/>
-  There may be defects I haven't noticed. Please think twice before use.
+- **This extension is NOT developed by HackMD team.**
+- I develop this extension for personal use.<br/>
+  There may be undiscovered defects. Please think twice before use.
 
 ## Requested Permissions
 
-* webRequest
-* webRequestBlocking
+- webRequest
+  - Read security headers related to iframe
+- declarativeNetRequest
+  - Modify found security headers to make functionality working
 
 ## Notice
 
-* Hostname **must** contains `hackmd` or `codimd`; otherwise, this extension will not enable book mode.
+- Hostname **must** contains `hackmd` or `codimd`; otherwise, this extension will not enable book mode.
   In the other words, if you host CodiMD without domain name, this extension is not for you.
-* After markdown is parsed by MarkdownIt, tags in the following will be reserved and others will be removed.
+- After markdown is parsed by MarkdownIt, tags in the following will be reserved and others will be removed.
   ```
   h1
   h2
@@ -65,12 +67,12 @@ Available on [Chrome Web Store](https://chrome.google.com/webstore/detail/codimd
    ```
 4. Enjoy it
 
-## Difference between book mode in HackMD
+## Difference between this extension and HackMD
 
-* Links will be opened in new tab
-  * HackMD ([Reference](https://hackmd.io/book-example#External-Link))
-    * `[target=_blank]` is added explicitly
-    * Starts with http (non-SSL)
-  * This extension
-    * `[target=_blank]` is added explicitly
-    * Cross-origin
+- Links will be opened in new tab
+  - HackMD ([Reference](https://hackmd.io/book-example#External-Link))
+    - `[target=_blank]` is added explicitly
+    - Starts with http (non-SSL)
+  - This extension
+    - `[target=_blank]` is added explicitly
+    - Cross-origin

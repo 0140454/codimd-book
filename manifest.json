@@ -1,37 +1,23 @@
 {
   "name": "CodiMD Book mode",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Display a sidebar like HackMD book mode",
   "icons": {
     "128": "icon.png"
   },
-  "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "<all_urls>"
-  ],
+  "permissions": ["webRequest", "declarativeNetRequest"],
+  "host_permissions": ["<all_urls>"],
   "background": {
-    "scripts": [
-      "js/background.js"
-    ]
+    "service_worker": "js/background.js"
   },
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "include_globs": [
-        "*hackmd*?*book*",
-        "*codimd*?*book*"
-      ],
+      "matches": ["<all_urls>"],
+      "include_globs": ["*hackmd*?*book*", "*codimd*?*book*"],
       "run_at": "document_start",
-      "css": [
-        "css/book.css"
-      ],
-      "js": [
-        "js/book.js"
-      ]
+      "css": ["css/book.css"],
+      "js": ["js/book.js"]
     }
   ],
-  "manifest_version": 2
+  "manifest_version": 3
 }

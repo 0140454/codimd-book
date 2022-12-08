@@ -3,7 +3,9 @@
   "scripts": {
     "build": "rm -rf ./dist && ./node_modules/.bin/webpack --config ./webpack.config.js",
     "pack": "rm -f $npm_package_name.zip && (cd dist ; zip -r ../$npm_package_name.zip *)",
-    "watch": "rm -rf ./dist && ./node_modules/.bin/webpack --watch --config webpack.config.js"
+    "watch": "rm -rf ./dist && ./node_modules/.bin/webpack --watch --config webpack.config.js",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write ."
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
@@ -11,6 +13,7 @@
     "eslint": "^8.17.0",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
+    "prettier": "^2.7.1",
     "sass-loader": "^13.0.0",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.9.2"
